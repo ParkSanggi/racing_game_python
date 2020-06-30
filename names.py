@@ -5,12 +5,12 @@ class Names:
 
     def __init__(self):
         temp_names = []
-        while not self.is_valid(temp_names):
+        while not self.__is_valid(temp_names):
             temp_names = InputView.input_car_names().split(',')
         self.__names = iter(temp_names)
 
     @staticmethod
-    def is_valid(temp_names):
+    def __is_valid(temp_names):
         if not temp_names:
             return False
         for name in temp_names:
@@ -18,16 +18,9 @@ class Names:
                 return False
         return True
 
-    def next(self):
+    def get_next_name(self):
         try:
             return self.__names.__next__()
         except StopIteration:
             return ""
-
-
-if __name__ == "__main__":
-    names = Names()
-    print(names.next())
-    print(names.next())
-    print(names.next())
 
